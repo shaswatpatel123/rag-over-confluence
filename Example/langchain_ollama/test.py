@@ -1,12 +1,3 @@
-# rag-over-confluence
-
-Rag over confluence(ROC) is a simplified library that integrates confluence's search and LLM to generate texts. Integrated with langchain.
-
-## Example
-
-For better outcomes for a prompt, custome retriever was used that uses `gemma2:7b` embeddings and InMemoryVectorStore to compare the questions with valid documents. Another finetuning can be reducing the HTML to just content and leaving table in HTML format for better retriever.
-
-```python
 from constants_local import *
 
 with open(CONFLUENCE_TOKEN_PATH, "r") as ofile:
@@ -46,7 +37,7 @@ Always say "thanks for asking!" at the end of the answer.
 
 Question: {question}
 
-Answer:"""
+Helpful Answer:"""
 custom_rag_prompt = PromptTemplate.from_template(template)
 
 rag_chain = (
@@ -57,4 +48,3 @@ rag_chain = (
 )
 
 print( rag_chain.invoke("what is the use of lightrag?"))
-```
